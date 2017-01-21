@@ -5,10 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EasyWordsApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="350" 
+      HorizontalAlignment="Center"
       Title="LearningPage">
 
     <Grid>
-        
+        <TextBox x:Name="wordTextBox" HorizontalAlignment="Left" Height="56" Margin="0,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <Button x:Name="check_btn" Content="Check" HorizontalAlignment="Left" Margin="0,294,0,0" VerticalAlignment="Top" Width="90" Height="44"/>
+        <Button x:Name="next_btn" Content="Next" HorizontalAlignment="Left" Margin="110,294,0,0" VerticalAlignment="Top" Width="90" Height="44"/>
+        <Label x:Name="slctdListLearningLabel" Content="No list selected" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Width="200" Height="31"/>
+        <Slider x:Name="learningSlider" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" Width="200" Maximum="2" SmallChange="1" IsSnapToTickEnabled="True"/>
+        <Label x:Name="sliderLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,101,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="back_button" Content="Home" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="100" Click="back_button_Click" Height="25"/>
+        <TextBox x:Name="wordTextBox2" HorizontalAlignment="Left" Height="56" Margin="0,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextAlignment="Center" FontSize="14" IsReadOnly="True"/>
+
     </Grid>
 </Page>

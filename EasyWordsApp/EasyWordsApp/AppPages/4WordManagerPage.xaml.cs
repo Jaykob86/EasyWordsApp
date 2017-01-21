@@ -24,5 +24,10 @@ namespace EasyWordsApp
         {
             InitializeComponent();
         }
+
+        private void backToLists_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\3ListManagerPage.xaml", UriKind.Relative));
+        }
     }
 }

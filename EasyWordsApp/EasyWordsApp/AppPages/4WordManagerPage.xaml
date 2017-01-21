@@ -5,10 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EasyWordsApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="350"
+      HorizontalAlignment="Center"
       Title="WordManagerPage">
 
     <Grid>
-        
+        <Button x:Name="backToLists_btn" Content="Back to lists" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="backToLists_btn_Click"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" Height="200" Width="300"/>
+        <Button x:Name="saveChanges_btn" Content="Save changes" HorizontalAlignment="Left" Margin="100,285,0,0" VerticalAlignment="Top" Width="100" Height="55"/>
+        <Label x:Name="wordManListLabel" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="50,40,0,0" VerticalAlignment="Top" Width="200"/>
+
     </Grid>
 </Page>

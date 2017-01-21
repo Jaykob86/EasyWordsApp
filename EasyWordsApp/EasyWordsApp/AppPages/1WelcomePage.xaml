@@ -5,10 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EasyWordsApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="250"
+      HorizontalAlignment="Center"
       Title="WelcomePage">
 
     <Grid>
-        
+        <Button x:Name="startLearning_btn" Content="Start learning" HorizontalAlignment="Left" Margin="0,152,0,0" VerticalAlignment="Top" Width="200" Height="41" Click="startLearning_btn_Click"/>
+        <Button x:Name="listManager_btn" Content="List manager" HorizontalAlignment="Left" Margin="0,204,0,0" VerticalAlignment="Top" Width="200" Height="41" Click="listManager_btn_Click"/>
+        <Label x:Name="slctdListLabel" Content="No list selected in List manager" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,109,10,0" VerticalAlignment="Top" Width="180" Height="28"/>
+        <Label x:Name="titleLabel" Content="Easy Words App" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="8,59,10,0" VerticalAlignment="Top" Height="45" Width="182" FontSize="24"/>
+
     </Grid>
 </Page>

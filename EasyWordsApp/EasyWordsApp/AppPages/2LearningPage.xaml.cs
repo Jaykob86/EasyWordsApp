@@ -24,5 +24,10 @@ namespace EasyWordsApp
         {
             InitializeComponent();
         }
+
+        private void back_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\1WelcomePage.xaml", UriKind.Relative));
+        }
     }
 }

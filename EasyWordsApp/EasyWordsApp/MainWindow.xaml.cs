@@ -23,6 +23,9 @@ namespace EasyWordsApp
         public MainWindow()
         {
             InitializeComponent();
+            mainWindowFrame.Navigate(new WelcomePage());
         }
+
+
     }
 }

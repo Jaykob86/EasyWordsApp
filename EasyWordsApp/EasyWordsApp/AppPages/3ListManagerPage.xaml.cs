@@ -24,5 +24,25 @@ namespace EasyWordsApp
         {
             InitializeComponent();
         }
+
+        private void back_button2_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\1WelcomePage.xaml", UriKind.Relative));
+        }
+
+        private void selectList_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+        }
+
+        private void editList_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+        }
+
+        private void createList_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+        }
     }
 }
