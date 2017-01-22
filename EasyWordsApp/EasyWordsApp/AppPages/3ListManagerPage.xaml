@@ -11,7 +11,7 @@
 
     <Grid>
         <Button x:Name="back_button2" Content="Home" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="100" Click="back_button2_Click" Height="25"/>
-        <ListView x:Name="listsListView" HorizontalAlignment="Left" Height="200" Margin="0,53,0,0" VerticalAlignment="Top" Width="300" SelectedIndex="0" SelectionMode="Single">
+        <ListView x:Name="listsListView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="200" Margin="0,53,0,0" VerticalAlignment="Top" Width="300" SelectedIndex="0" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn/>
@@ -20,7 +20,7 @@
         </ListView>
         <Button x:Name="createList_btn" Content="Create new" HorizontalAlignment="Left" Margin="0,277,0,0" VerticalAlignment="Top" Width="80" Height="63" Click="createList_btn_Click"/>
         <Button x:Name="editList_btn" Content="Edit selected" HorizontalAlignment="Left" Margin="110,277,0,0" VerticalAlignment="Top" Width="80" Height="63" Click="editList_btn_Click"/>
-        <Button x:Name="selectList_btn" Content="Select list" HorizontalAlignment="Left" Margin="220,277,0,0" VerticalAlignment="Top" Width="80" Height="63"/>
+        <Button x:Name="selectList_btn" Content="Select list" HorizontalAlignment="Left" Margin="220,277,0,0" VerticalAlignment="Top" Width="80" Height="63" Click="selectList_btn_Click"/>
 
     </Grid>
 </Page>

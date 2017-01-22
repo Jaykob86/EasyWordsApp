@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EasyWordsApp.Models;
+using System.IO;
+using EasyWordsApp.Models;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json;
 
 namespace EasyWordsApp
 {
@@ -22,27 +27,47 @@ namespace EasyWordsApp
     {
         public ListManagerPage()
         {
+            List<easyWordListObj> allEwLists = new List<easyWordListObj>();
+            easyWordListObj oneEwList = new easyWordListObj();
+            DirectoryInfo d = new DirectoryInfo(@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\");
+
+            foreach (var file in d.GetFiles())
+            {
+                string filePath = file.FullName;
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    string json = r.ReadToEnd();
+                    oneEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);
+                }
+                allEwLists.Add(oneEwList);
+            }
+            List<string> listNames = allEwLists.Select(x => x.EwListName).ToList();
             InitializeComponent();
+            listsListView.ItemsSource = listNames;
+
         }
 
         private void back_button2_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\1WelcomePage.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new WelcomePage());
         }
 
         private void selectList_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new WelcomePage());
         }
 
         private void editList_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+            //EasyWordsApp.Models.easyWordListObj editedList = listsListView.SelectedItem;
+            //this.NavigationService.Navigate(new WordManagerPage(editedList));
         }
 
         private void createList_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\4WordManagerPage.xaml", UriKind.Relative));
+            easyWordListObj newListObj = new Models.easyWordListObj();
+            this.NavigationService.Navigate(new WordManagerPage(newListObj));
         }
     }
 }
+

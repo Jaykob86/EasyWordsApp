@@ -29,12 +29,12 @@ namespace EasyWordsApp
 
         private void startLearning_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\2LearningPage.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new LearningPage());
         }
 
         private void listManager_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\3ListManagerPage.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new ListManagerPage());
         }
     }
 }

@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EasyWordsApp.Models;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace EasyWordsApp
 {
@@ -20,14 +26,28 @@ namespace EasyWordsApp
     /// </summary>
     public partial class WordManagerPage : Page
     {
-        public WordManagerPage()
+        public WordManagerPage(easyWordListObj newList)
         {
             InitializeComponent();
+            newListTextBox.Text = newList.EwListName;
+            dgEditEwList.ItemsSource = newList.EwList;
         }
 
         private void backToLists_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri(@"\AppPages\3ListManagerPage.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new ListManagerPage());
+        }
+
+        private void saveChanges_btn_Click(object sender, RoutedEventArgs e)
+        {
+            easyWordListObj userList = new easyWordListObj(newListTextBox.Text);
+            foreach (easyWord item in dgEditEwList.ItemsSource)
+            {
+                userList.EwList.Add(item);
+            }
+            System.IO.File.WriteAllText(@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\test.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
+            MessageBox.Show("Your list was saved!");
+            this.NavigationService.Navigate(new ListManagerPage());
         }
     }
 }
