@@ -6,13 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Specialized; // NotifyCollectionChangedEventHandler
+using System.IO;
+using Newtonsoft.Json;
 
 namespace EasyWordsApp.Models
 {
+
     public class easyWordListObj
     {
-        private TrulyObservableCollection<easyWord> ewList;
         private string ewListName;
+        private TrulyObservableCollection<easyWord> ewList;
+
+        public string EwListName
+        {
+            get { return ewListName; }
+            set { ewListName = value; }
+        }
 
         public TrulyObservableCollection<easyWord> EwList
         {
@@ -20,17 +29,13 @@ namespace EasyWordsApp.Models
             set {ewList = value; }
         }
 
-        public string EwListName
-        {
-            get {  return ewListName; }
-            set { ewListName = value; }
-        }
-
         public easyWordListObj(string listName = "")
         {
             ewList = new TrulyObservableCollection<easyWord>();
             ewListName = listName;
         }
+
+
 
 
         public class easyWord : INotifyPropertyChanged

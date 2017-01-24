@@ -14,7 +14,9 @@
         <ListView x:Name="listsListView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="200" Margin="0,53,0,0" VerticalAlignment="Top" Width="300" SelectedIndex="0" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn/>
+                    <GridViewColumn Width="290">
+                    <GridViewColumnHeader TextElement.FontSize="16">List name</GridViewColumnHeader>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

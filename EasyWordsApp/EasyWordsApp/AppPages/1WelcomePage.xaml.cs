@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using EasyWordsApp.Models;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json;
 
 namespace EasyWordsApp
 {
@@ -23,13 +27,30 @@ namespace EasyWordsApp
         public WelcomePage()
         {
             InitializeComponent();
-            
+            if (File.Exists("settings.txt"))
+            {
+                string slctdListName = File.ReadAllText("settings.txt");
+                startLearning_btn.IsEnabled = true;
+                slctdListLabel.Content = slctdListName;
+            }
+            else
+            {
+                slctdListLabel.Content = "No list selected in List manager";
+                startLearning_btn.IsEnabled = false;
+            }
 
         }
 
         private void startLearning_btn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new LearningPage());
+            string slctdListName = File.ReadAllText("settings.txt");
+            easyWordListObj learnEwList = new easyWordListObj();
+            using (StreamReader r = new StreamReader(App.APPFOLDER + slctdListName + ".json"))
+            {
+                string json = r.ReadToEnd();
+                learnEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);
+            }
+            this.NavigationService.Navigate(new LearningPage(learnEwList));
         }
 
         private void listManager_btn_Click(object sender, RoutedEventArgs e)

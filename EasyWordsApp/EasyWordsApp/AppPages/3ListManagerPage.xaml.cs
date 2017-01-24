@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EasyWordsApp.Models;
 using System.IO;
-using EasyWordsApp.Models;
 using static EasyWordsApp.Models.easyWordListObj;
 using Newtonsoft.Json;
 
@@ -29,7 +28,7 @@ namespace EasyWordsApp
         {
             List<easyWordListObj> allEwLists = new List<easyWordListObj>();
             easyWordListObj oneEwList = new easyWordListObj();
-            DirectoryInfo d = new DirectoryInfo(@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\");
+            DirectoryInfo d = new DirectoryInfo(App.APPFOLDER);
 
             foreach (var file in d.GetFiles())
             {
@@ -43,7 +42,7 @@ namespace EasyWordsApp
             }
             List<string> listNames = allEwLists.Select(x => x.EwListName).ToList();
             InitializeComponent();
-            listsListView.ItemsSource = listNames;
+            listsListView.ItemsSource = allEwLists.Select(x => x.EwListName).ToList();
 
         }
 
@@ -54,19 +53,26 @@ namespace EasyWordsApp
 
         private void selectList_btn_Click(object sender, RoutedEventArgs e)
         {
+            File.WriteAllText("settings.txt",listsListView.SelectedItem.ToString());
             this.NavigationService.Navigate(new WelcomePage());
         }
 
         private void editList_btn_Click(object sender, RoutedEventArgs e)
         {
-            //EasyWordsApp.Models.easyWordListObj editedList = listsListView.SelectedItem;
-            //this.NavigationService.Navigate(new WordManagerPage(editedList));
+            easyWordListObj editEwList = new easyWordListObj();
+            using (StreamReader r = new StreamReader(App.APPFOLDER + listsListView.SelectedItem + ".json"))
+            {
+                string json = r.ReadToEnd();
+                editEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);
+            }
+            
+            this.NavigationService.Navigate(new WordManagerPage(editEwList,false));
         }
 
         private void createList_btn_Click(object sender, RoutedEventArgs e)
         {
             easyWordListObj newListObj = new Models.easyWordListObj();
-            this.NavigationService.Navigate(new WordManagerPage(newListObj));
+            this.NavigationService.Navigate(new WordManagerPage(newListObj,true));
         }
     }
 }

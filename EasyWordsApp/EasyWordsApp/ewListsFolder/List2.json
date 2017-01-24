@@ -1,0 +1,20 @@
+{
+  "EwList": [
+    {
+      "EwUpSide": "sdsdf",
+      "EwDownSide": "sdfsssss",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "aaaa",
+      "EwDownSide": "bbbbb",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "cccccc",
+      "EwDownSide": "dddddd",
+      "EwKnowledgeLevel": 0
+    }
+  ],
+  "EwListName": "List2"
+}

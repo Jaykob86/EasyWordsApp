@@ -149,6 +149,7 @@
     <Compile Include="AppPages\3ListManagerPage.xaml.cs">
       <DependentUpon>3ListManagerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

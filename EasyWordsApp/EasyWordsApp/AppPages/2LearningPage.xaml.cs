@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EasyWordsApp.Models;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace EasyWordsApp
 {
@@ -20,9 +26,13 @@ namespace EasyWordsApp
     /// </summary>
     public partial class LearningPage : Page
     {
-        public LearningPage()
+        public LearningPage(easyWordListObj learnList)
         {
             InitializeComponent();
+            Random rnd = new Random();
+            
+            wordTextBox.Text = learnList.EwList[rnd.Next(0, learnList.EwList.Count)].EwUpSide;
+            
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)

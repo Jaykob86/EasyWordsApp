@@ -12,11 +12,11 @@
     <Grid>
         <Button x:Name="backToLists_btn" Content="Back to lists" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="backToLists_btn_Click"/>
         <TextBox x:Name="newListTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="0,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="14" TextAlignment="Center"/>
-        <DataGrid x:Name="dgEditEwList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="0,81,0,0" VerticalAlignment="Top" Height="200" Width="300" SelectedIndex="0" CanUserAddRows="True" CanUserDeleteRows="True" IsSynchronizedWithCurrentItem="True" IsTextSearchEnabled="True">
+        <DataGrid TextElement.FontSize="12" x:Name="dgEditEwList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="0,81,0,0" VerticalAlignment="Top" Height="200" Width="300" CanUserAddRows="True" CanUserDeleteRows="True" IsSynchronizedWithCurrentItem="True" IsTextSearchEnabled="True" CanUserReorderColumns="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Up Side" Binding="{Binding Path=EwUpSide, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="120"/>
-                <DataGridTextColumn Header="Down Side" Binding="{Binding Path=EwDownSide,Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="120"/>
-                <DataGridTextColumn Header="Level" Binding="{Binding Path=EwKnowledgeLevel,Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="60"/>
+                <DataGridTextColumn Header="Up Side" Binding="{Binding Path=EwUpSide, Mode=TwoWay}" Width="120"/>
+                <DataGridTextColumn Header="Down Side" Binding="{Binding Path=EwDownSide,Mode=TwoWay}" Width="120"/>
+                <DataGridTextColumn Header="Level" Binding="{Binding Path=EwKnowledgeLevel,Mode=TwoWay}" Width="50"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="saveChanges_btn" Content="Save changes" HorizontalAlignment="Left" Margin="100,295,0,0" VerticalAlignment="Top" Width="100" Height="55" Click="saveChanges_btn_Click"/>

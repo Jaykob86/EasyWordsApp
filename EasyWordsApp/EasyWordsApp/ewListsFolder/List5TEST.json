@@ -1,0 +1,40 @@
+{
+  "EwListName": "List5TEST",
+  "EwList": [
+    {
+      "EwUpSide": "qqqqqq",
+      "EwDownSide": "dddddd",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "rrrrrrrr",
+      "EwDownSide": "tttttttttt",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "test1",
+      "EwDownSide": "test2",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "test3",
+      "EwDownSide": "test4",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "fghfghfgh",
+      "EwDownSide": "ghfghfg",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "aaaa",
+      "EwDownSide": "aaaaa",
+      "EwKnowledgeLevel": 0
+    },
+    {
+      "EwUpSide": "xxxxx",
+      "EwDownSide": "xxxxx",
+      "EwKnowledgeLevel": 0
+    }
+  ]
+}

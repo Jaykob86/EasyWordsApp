@@ -5,6 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using EasyWordsApp.Models;
+using System.IO;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json;
 
 namespace EasyWordsApp
 {
@@ -13,5 +17,6 @@ namespace EasyWordsApp
     /// </summary>
     public partial class App : Application
     {
+        public const string APPFOLDER = @"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\";
     }
 }

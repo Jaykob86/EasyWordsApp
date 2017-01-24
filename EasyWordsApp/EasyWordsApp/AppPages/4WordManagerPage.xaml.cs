@@ -26,10 +26,17 @@ namespace EasyWordsApp
     /// </summary>
     public partial class WordManagerPage : Page
     {
-        public WordManagerPage(easyWordListObj newList)
+        public WordManagerPage(easyWordListObj newList, bool createNew)
         {
             InitializeComponent();
-            newListTextBox.Text = newList.EwListName;
+            if (createNew)
+            {
+                newListTextBox.Text = "";
+            }
+            else
+            {
+                newListTextBox.Text = newList.EwListName;
+            }
             dgEditEwList.ItemsSource = newList.EwList;
         }
 
@@ -45,7 +52,7 @@ namespace EasyWordsApp
             {
                 userList.EwList.Add(item);
             }
-            System.IO.File.WriteAllText(@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\test.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
+            System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{userList.EwListName}.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
             MessageBox.Show("Your list was saved!");
             this.NavigationService.Navigate(new ListManagerPage());
         }
