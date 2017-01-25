@@ -8,6 +8,7 @@
         Title="Easy Words App" Height="450" Width="375"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Frame x:Name="mainWindowFrame" NavigationUIVisibility="Hidden" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="415" VerticalAlignment="Top" Width="350" Margin="10,0,10,0"/>
 

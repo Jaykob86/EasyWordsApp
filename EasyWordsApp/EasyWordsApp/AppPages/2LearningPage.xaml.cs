@@ -29,15 +29,47 @@ namespace EasyWordsApp
         public LearningPage(easyWordListObj learnList)
         {
             InitializeComponent();
-            Random rnd = new Random();
-            
-            wordTextBox.Text = learnList.EwList[rnd.Next(0, learnList.EwList.Count)].EwUpSide;
-            
+            int rndNum = learnList.getRndWordNum();
+            Dictionary<int, TrulyObservableCollection<easyWord>> wordDictionary = new Dictionary<int, TrulyObservableCollection<easyWord>>();
+            wordDictionary.Add(rndNum, learnList.EwList);
+            Application app = Application.Current;
+            app.Properties["wordListObj"] = learnList;
+            app.Properties["wordNum"] = rndNum;
+            wordTextBox.DataContext = learnList.EwList[rndNum];
+            slctdListLearningLabel.DataContext = learnList;
+
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new WelcomePage());
+        }
+
+        private void next_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Application app = Application.Current;
+            if (app.Properties["wordListObj"] != null)
+            {
+                if (wordTextBox.DataContext == null || wordTextBox2.DataContext == null)
+                {
+                    ((easyWordListObj)app.Properties["wordListObj"]).EwList[(int)app.Properties["wordNum"]].EwKnowledgeLevel = 1;
+                    System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{((easyWordListObj)app.Properties["wordListObj"]).EwListName}.json", JsonConvert.SerializeObject(((easyWordListObj)app.Properties["wordListObj"]), Formatting.Indented));
+                }
+
+                this.NavigationService.Navigate(new LearningPage(((easyWordListObj)app.Properties["wordListObj"])));
+            }
+
+        }
+
+        private void check_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Application app = Application.Current;
+            if (app.Properties["wordListObj"] != null)
+            {
+                wordTextBox2.DataContext = ((easyWordListObj)app.Properties["wordListObj"]).EwList[(int)app.Properties["wordNum"]];
+                ((easyWordListObj)app.Properties["wordListObj"]).EwList[(int)app.Properties["wordNum"]].EwKnowledgeLevel = 0;
+                System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{((easyWordListObj)app.Properties["wordListObj"]).EwListName}.json", JsonConvert.SerializeObject(((easyWordListObj)app.Properties["wordListObj"]), Formatting.Indented));
+            }
         }
     }
 }

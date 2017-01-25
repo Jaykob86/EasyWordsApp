@@ -17,6 +17,36 @@ namespace EasyWordsApp.Models
         private string ewListName;
         private TrulyObservableCollection<easyWord> ewList;
 
+        public int getRndWordNum()
+        {
+            var wordListLevel0 = EwList.Where(x => x.EwKnowledgeLevel == 0).Select(x => x);
+            var wordListLevel1 = EwList.Where(x => x.EwKnowledgeLevel == 1).Select(x => x);
+            Random rnd = new Random();
+            int groupNum = 0;
+            if (wordListLevel0.Count() > 0 & wordListLevel1.Count() > 0)
+            {
+                groupNum = rnd.Next(0, 2);
+            }
+            else if (wordListLevel0.Count() > 0 & wordListLevel1.Count() < 1)
+            {
+                groupNum = 0;
+            } 
+            else if (wordListLevel1.Count() > 0 & wordListLevel0.Count() < 1)
+            {
+                groupNum = 2;
+            }
+            switch (groupNum)
+            {
+                case 0:
+                case 1:
+                    return rnd.Next(0, wordListLevel0.Count());
+                case 2:
+                    return rnd.Next(0, wordListLevel1.Count());
+                default:
+                    return rnd.Next(0, EwList.Count());
+            }
+        }
+
         public string EwListName
         {
             get { return ewListName; }
