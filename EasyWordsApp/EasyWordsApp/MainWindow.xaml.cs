@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EasyWordsApp.Models;
+using static EasyWordsApp.Models.easyWordListObj;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EasyWordsApp
 {
@@ -26,6 +32,14 @@ namespace EasyWordsApp
             mainWindowFrame.Navigate(new WelcomePage());
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Application app = Application.Current;
+            if ((easyWordListObj)app.Properties["wordListObj"] != null)
+            {
+                System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{((easyWordListObj)app.Properties["wordListObj"]).EwListName}.json", JsonConvert.SerializeObject(((easyWordListObj)app.Properties["wordListObj"]), Formatting.Indented));
+            }
+        }
 
     }
 }

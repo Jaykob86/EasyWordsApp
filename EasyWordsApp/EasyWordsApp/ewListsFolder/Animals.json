@@ -17,7 +17,7 @@
       "EwKnowledgeLevel": 1
     },
     {
-      "EwUpSide": "Kravička",
+      "EwUpSide": "Kráva",
       "EwDownSide": "Cow",
       "EwKnowledgeLevel": 1
     },
@@ -29,7 +29,7 @@
     {
       "EwUpSide": "Hroch",
       "EwDownSide": "Hippo",
-      "EwKnowledgeLevel": 0
+      "EwKnowledgeLevel": 1
     },
     {
       "EwUpSide": "Lev",
@@ -39,7 +39,7 @@
     {
       "EwUpSide": "Tygr",
       "EwDownSide": "Tiger",
-      "EwKnowledgeLevel": 0
+      "EwKnowledgeLevel": 1
     },
     {
       "EwUpSide": "Orel",
@@ -49,7 +49,7 @@
     {
       "EwUpSide": "Liška",
       "EwDownSide": "Fox",
-      "EwKnowledgeLevel": 0
+      "EwKnowledgeLevel": 1
     }
   ]
 }

@@ -17,7 +17,7 @@ namespace EasyWordsApp.Models
         private string ewListName;
         private TrulyObservableCollection<easyWord> ewList;
 
-        public int getRndWordNum()
+        public easyWord getRndWord()
         {
             var wordListLevel0 = EwList.Where(x => x.EwKnowledgeLevel == 0).Select(x => x);
             var wordListLevel1 = EwList.Where(x => x.EwKnowledgeLevel == 1).Select(x => x);
@@ -35,15 +35,17 @@ namespace EasyWordsApp.Models
             {
                 groupNum = 2;
             }
+            //Return random word either from level 1 group (well known) or level 0 group (less known) words
+            //level 0 group should be chosen during learning more often => 66,6%
             switch (groupNum)
             {
                 case 0:
                 case 1:
-                    return rnd.Next(0, wordListLevel0.Count());
+                    return wordListLevel0.ElementAt(rnd.Next(0, wordListLevel0.Count()));
                 case 2:
-                    return rnd.Next(0, wordListLevel1.Count());
+                    return wordListLevel1.ElementAt(rnd.Next(0, wordListLevel1.Count()));
                 default:
-                    return rnd.Next(0, EwList.Count());
+                    return EwList.ElementAt(rnd.Next(0, EwList.Count()));
             }
         }
 
