@@ -18,6 +18,7 @@ using static EasyWordsApp.Models.easyWordListObj;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace EasyWordsApp
 {
@@ -37,7 +38,7 @@ namespace EasyWordsApp
             Application app = Application.Current;
             if ((easyWordListObj)app.Properties["wordListObj"] != null)
             {
-                System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{((easyWordListObj)app.Properties["wordListObj"]).EwListName}.json", JsonConvert.SerializeObject(((easyWordListObj)app.Properties["wordListObj"]), Formatting.Indented));
+                System.IO.File.WriteAllText(Helpers.Helpers.listsFolder + ((easyWordListObj)app.Properties["wordListObj"]).EwListName + ".json", JsonConvert.SerializeObject(((easyWordListObj)app.Properties["wordListObj"]), Formatting.Indented));
             }
         }
 

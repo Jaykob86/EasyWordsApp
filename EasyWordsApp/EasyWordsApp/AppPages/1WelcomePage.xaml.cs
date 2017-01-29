@@ -30,8 +30,16 @@ namespace EasyWordsApp
             if (File.Exists("settings.txt"))
             {
                 string slctdListName = File.ReadAllText("settings.txt");
-                startLearning_btn.IsEnabled = true;
-                slctdListLabel.Content = slctdListName;
+                if (File.Exists(Helpers.Helpers.listsFolder + slctdListName + ".json"))
+                {
+                    startLearning_btn.IsEnabled = true;
+                    slctdListLabel.Content = slctdListName;
+                }
+                else
+                {
+                    slctdListLabel.Content = "No list selected in List manager";
+                    startLearning_btn.IsEnabled = false;
+                }
             }
             else
             {
@@ -45,12 +53,12 @@ namespace EasyWordsApp
         {
             string slctdListName = File.ReadAllText("settings.txt");
             easyWordListObj learnEwList = new easyWordListObj();
-            using (StreamReader r = new StreamReader(App.APPFOLDER + slctdListName + ".json"))
-            {
-                string json = r.ReadToEnd();
-                learnEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);
-            }
-            this.NavigationService.Navigate(new LearningPage(learnEwList));
+                using (StreamReader r = new StreamReader(Helpers.Helpers.listsFolder + slctdListName + ".json"))
+                {
+                    string json = r.ReadToEnd();
+                    learnEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);
+                }
+                this.NavigationService.Navigate(new LearningPage(learnEwList));
         }
 
         private void listManager_btn_Click(object sender, RoutedEventArgs e)

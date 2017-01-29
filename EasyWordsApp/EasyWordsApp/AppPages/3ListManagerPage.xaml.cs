@@ -28,7 +28,8 @@ namespace EasyWordsApp
         {
             List<easyWordListObj> allEwLists = new List<easyWordListObj>();
             easyWordListObj oneEwList = new easyWordListObj();
-            DirectoryInfo d = new DirectoryInfo(App.APPFOLDER);
+            System.IO.Directory.CreateDirectory(Helpers.Helpers.listsFolder);
+            DirectoryInfo d = new DirectoryInfo(Helpers.Helpers.listsFolder);
 
             foreach (var file in d.GetFiles())
             {
@@ -40,10 +41,17 @@ namespace EasyWordsApp
                 }
                 allEwLists.Add(oneEwList);
             }
-            List<string> listNames = allEwLists.Select(x => x.EwListName).ToList();
-            InitializeComponent();
-            listsListView.ItemsSource = allEwLists.Select(x => x.EwListName).ToList();
 
+            InitializeComponent();
+
+            if (allEwLists.Count() == 0)
+            {
+                easyWordListObj newListFile = new easyWordListObj("Create new list");
+                allEwLists.Add(newListFile);
+                editList_btn.IsEnabled = false;
+                selectList_btn.IsEnabled = false;
+            }
+            listsListView.ItemsSource = allEwLists.Select(x => x.EwListName).ToList();
         }
 
         private void back_button2_Click(object sender, RoutedEventArgs e)
@@ -60,7 +68,7 @@ namespace EasyWordsApp
         private void editList_btn_Click(object sender, RoutedEventArgs e)
         {
             easyWordListObj editEwList = new easyWordListObj();
-            using (StreamReader r = new StreamReader(App.APPFOLDER + listsListView.SelectedItem + ".json"))
+            using (StreamReader r = new StreamReader(Helpers.Helpers.listsFolder + listsListView.SelectedItem + ".json"))
             {
                 string json = r.ReadToEnd();
                 editEwList = JsonConvert.DeserializeObject<easyWordListObj>(json);

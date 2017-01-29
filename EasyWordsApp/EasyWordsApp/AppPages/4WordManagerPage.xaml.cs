@@ -52,7 +52,7 @@ namespace EasyWordsApp
             {
                 userList.EwList.Add(item);
             }
-            System.IO.File.WriteAllText($@"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\{userList.EwListName}.json", JsonConvert.SerializeObject(userList, Formatting.Indented));
+            System.IO.File.WriteAllText(Helpers.Helpers.listsFolder + userList.EwListName + ".json", JsonConvert.SerializeObject(userList, Formatting.Indented));
             MessageBox.Show("Your list was saved!");
             this.NavigationService.Navigate(new ListManagerPage());
         }

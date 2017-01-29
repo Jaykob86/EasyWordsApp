@@ -17,6 +17,5 @@ namespace EasyWordsApp
     /// </summary>
     public partial class App : Application
     {
-        public const string APPFOLDER = @"C:\neXX\GIT Projects\EasyWordsApp\EasyWordsApp\EasyWordsApp\ewListsFolder\";
     }
 }
